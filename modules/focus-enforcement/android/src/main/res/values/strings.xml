@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="lockin_accessibility_label">LOCKIN focus detection</string>
+  <string name="lockin_accessibility_description">LOCKIN detects which app comes to the front during a focus session you started, so it can cover apps outside your allowlist. It only reads the app\'s package name. It does not read screen content, does not tap or type for you, and nothing leaves the device.</string>
+</resources>

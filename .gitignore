@@ -2,8 +2,8 @@
 node_modules/
 
 # Continuous Native Generation: native dirs are produced by `expo prebuild`, never committed
-android/
-ios/
+/android/
+/ios/
 
 # Expo
 .expo/
@@ -14,7 +14,8 @@ expo-env.d.ts
 # build outputs
 *.apk
 *.aab
-build/
+/build/
+modules/*/android/build/
 
 # signing / secrets (EAS manages credentials)
 *.keystore
