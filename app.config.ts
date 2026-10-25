@@ -32,7 +32,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   version: '0.1.0',
   orientation: 'portrait',
   icon: `./assets/icon${iconSuffix}.png`,
-  userInterfaceStyle: 'dark',
   backgroundColor: '#0A0A0A',
   platforms: ['android'],
   android: {
