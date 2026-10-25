@@ -1,0 +1,34 @@
+# dependencies
+node_modules/
+
+# Continuous Native Generation: native dirs are produced by `expo prebuild`, never committed
+android/
+ios/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# build outputs
+*.apk
+*.aab
+build/
+
+# signing / secrets (EAS manages credentials)
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+credentials.json
+.env*
+
+# misc
+.DS_Store
+*.log
+npm-debug.*
+.metro-health-check*
+*.tsbuildinfo
