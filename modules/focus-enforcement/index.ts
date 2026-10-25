@@ -31,6 +31,8 @@ declare class FocusEnforcementModule extends NativeModule<FocusEnforcementEvents
   drainEvents(): Promise<NativeEvent[]>;
   setProfanityEnabled(enabled: boolean): Promise<void>;
   getProfanityEnabled(): Promise<boolean>;
+  /** Hardline: clear Device Owner + deactivate device admin. Rejects while a session runs. */
+  releaseDeviceControls(): Promise<void>;
 }
 
 export default requireNativeModule<FocusEnforcementModule>('FocusEnforcement');

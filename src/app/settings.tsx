@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Switch, View } from 'react-native';
+import { Alert, Switch, View } from 'react-native';
 
 import { Focus } from '../lib/focus';
 import { isHardline, usePermissionStatus } from '../lib/permissions';
@@ -8,7 +8,7 @@ import { Button, P, Row, Screen, Status } from '../ui/components';
 import { colors } from '../ui/theme';
 
 export default function Settings() {
-  const { status } = usePermissionStatus();
+  const { status, refresh } = usePermissionStatus();
   const [profanity, setProfanity] = useState(false);
 
   useEffect(() => {
@@ -52,6 +52,30 @@ export default function Settings() {
               : 'Optional, for a spare phone only. Set up with adb; see README → Device Owner. Without it, enforcement uses the accessibility guard and device admin.'}
           </P>
         </Row>
+      )}
+
+      {isHardline && status && (status.deviceOwner || status.deviceAdmin) && (
+        <Button
+          title="Release device controls"
+          kind="danger"
+          onPress={() =>
+            Alert.alert(
+              'Release device controls?',
+              'Removes Device Owner (if set) and deactivates device admin. LOCKIN HL can then be uninstalled normally. Only works when no session is running.',
+              [
+                { text: 'Cancel', style: 'cancel' },
+                {
+                  text: 'Release',
+                  style: 'destructive',
+                  onPress: () =>
+                    Focus.releaseDeviceControls()
+                      .then(refresh)
+                      .catch((e) => Alert.alert('Refused', e instanceof Error ? e.message : String(e))),
+                },
+              ]
+            )
+          }
+        />
       )}
 
       <Button title="Permissions" kind="secondary" onPress={() => router.push('/onboarding/permissions')} />
