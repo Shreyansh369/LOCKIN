@@ -26,7 +26,9 @@ const iconSuffix = isHardline ? '-hardline' : '';
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: isHardline ? 'LOCKIN HL' : 'LOCKIN',
-  slug: isHardline ? 'lockin-hardline' : 'lockin',
+  // Same slug for both: one EAS project (projectId is bound to a slug) holding two
+  // application IDs, each with its own EAS-managed keystore.
+  slug: 'lockin',
   // Distinct schemes so BlockerActivity deep links never resolve to the other variant.
   scheme: isHardline ? 'lockinhl' : 'lockin',
   version: '0.1.0',
